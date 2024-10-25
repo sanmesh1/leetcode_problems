@@ -1,3 +1,5 @@
+##https://leetcode.com/discuss/interview-question/5950077/Amazon-SDE-I-or-OA-or-10212024
+
 # from typing import List
 # #assume snake starting position is 0, and it takes 1 second to go right or left. find the minimum time to eat "minimum_number_of_apples_to_eat"
 # class SnakePosition:
