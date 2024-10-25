@@ -1,7 +1,7 @@
 ##https://leetcode.com/discuss/interview-question/5950077/Amazon-SDE-I-or-OA-or-10212024
 
 # from typing import List
-# #assume snake starting position is 0, and it takes 1 second to go right or left. find the minimum time to eat "minimum_number_of_apples_to_eat"
+# # #assume snake starting position is 0, and it takes 1 second to go right or left. find the minimum time to eat "minimum_number_of_apples_to_eat"
 # class SnakePosition:
 #     def __init__(self, pos, left = None, right = None):
 #         self.pos = pos
@@ -78,7 +78,9 @@
 #     # time complexity = 2^minimum_number_of_apples_to_eat
 #     # space complexity = minimum_number_of_apples_to_eat
 
-
+################################################################################################################################################
+################################################################################################################################################
+################################################################################################################################################
 class Solution:
 	def findMinimumTime(self, k: int, position: list[int]) -> int:
 		position.sort()
@@ -94,6 +96,17 @@ class Solution:
 			min_time = min(min_time, time_to_left_first, time_to_right_first)
 		return min_time
 
+	def findMinimumTime_Sanmesh(self, k: int, position: list[int]) -> int:
+		position.sort()
+		minimum_time = float('inf')
+		for i in range(len(position)-k+1):
+			test = 1
+			minimum_time_left_end_to_right_end = abs(position[i+k-1]) + abs(position[i+k-1] - position[i])
+			minimum_time_right_end_to_left_end = abs(position[i]) + abs(position[i+k-1] - position[i])
+			minimum_time = min(minimum_time, minimum_time_left_end_to_right_end, minimum_time_right_end_to_left_end)
+		return minimum_time
+
+			
 	def run_tests(self):
 		test_cases = [
 			{"input": (3, [-20, 5, 10]), "expected": 40},
@@ -118,7 +131,8 @@ class Solution:
 		for idx, case in enumerate(test_cases):
 			k, position = case["input"]
 			expected = case["expected"]
-			result = self.findMinimumTime(k, position)
+			# result = self.findMinimumTime(k, position)
+			result = self.findMinimumTime_Sanmesh(k, position)
 			if result == expected:
 				print(f"Test case {idx + 1} passed!")
 				passed_tests += 1
